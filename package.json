@@ -2,13 +2,20 @@
   "name": "yakshop-mdrahiem",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"wsrun --parallel start\""
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xebia/yakshop-mdrahiem.git"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "wsrun": "^5.2.0"
   },
   "keywords": [],
   "author": "",
