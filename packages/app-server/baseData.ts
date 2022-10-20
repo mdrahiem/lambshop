@@ -4,7 +4,11 @@ interface IYak {
   sex: "f" | "m";
 }
 
-const db: IYak[] = [
+interface IHerd {
+  herd: IYak[];
+}
+
+const initData: IYak[] = [
   {
     name: "Betty-1",
     age: 4,
@@ -22,4 +26,4 @@ const db: IYak[] = [
   },
 ];
 
-export { db, IYak };
+export { initData, IYak, IHerd };

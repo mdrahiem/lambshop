@@ -2,11 +2,11 @@ import express from "express";
 import * as trpc from "@trpc/server";
 import * as trpcExpress from "@trpc/server/adapters/express";
 import cors from "cors";
-import { db, IYak } from "./baseData";
+import { initData, IYak } from "./baseData";
 
 const appRouter = trpc.router().query("load", {
   resolve() {
-    return db;
+    return initData;
   },
 });
 
