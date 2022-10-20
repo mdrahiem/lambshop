@@ -4,7 +4,7 @@ A mono repo with Node as server React as client
 
 ## User Stories
 
-- [ ] Load init data
+- [x] Load init data
 - [ ] Load stock
 - [ ] Load Herd
 - [ ] Order form for user
