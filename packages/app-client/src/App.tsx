@@ -14,10 +14,10 @@ interface IReturnData {
 }
 
 const AppContent = () => {
-  const hello = trpc.useQuery(["load"]) as IReturnData;
+  const initData = trpc.useQuery(["load"]) as IReturnData;
   return (
     <div className="mt-10 text-3xl mx-auto max-w-6xl">
-      <div>{JSON.stringify(hello.data)}</div>
+      <div>{JSON.stringify(initData.data)}</div>
       <Products />
     </div>
   );
