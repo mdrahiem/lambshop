@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
-import { initData, IYak } from "./baseData";
-import { loadRouter } from "./load/load.router";
+import { loadRouter } from "./routes/load.router";
+import { herdRouter } from "./routes/herd.router";
+import { stockRouter } from "./routes/stock.router";
 
 const app = express();
 
@@ -10,6 +11,8 @@ app.use(express.json());
 
 // Routes
 app.use("/yak-shop/load", loadRouter);
+app.use("/yak-shop/herd", herdRouter);
+app.use("/yak-shop/stock", stockRouter);
 
 const port = 8080;
 

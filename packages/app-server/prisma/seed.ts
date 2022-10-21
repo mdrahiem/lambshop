@@ -2,6 +2,7 @@ import { db } from "../utils/db.server";
 import { initData } from "../baseData";
 
 async function seed() {
+  await db.yak.deleteMany({});
   await Promise.all(
     initData.map((d) =>
       db.yak.create({
