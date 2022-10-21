@@ -6,6 +6,11 @@ export type Yak = {
 };
 
 export interface ILoadStock {
-  milk: string;
-  skin: string;
+  milk: number;
+  skins: number;
+}
+
+export interface IOrderPayload extends ILoadStock {
+  customer: string;
+  days: number;
 }

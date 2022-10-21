@@ -9,7 +9,7 @@ export const herdRouter = express.Router();
 herdRouter.get("/:day", async (request: Request, response: Response) => {
   try {
     const day: number = parseInt(request.params.day, 10);
-    const herdList = await HerdService.herdList();
+    const herdList = await HerdService.getherdList();
     const totalMilk = getTotalMilk(herdList, day);
 
     return response.status(200).json({

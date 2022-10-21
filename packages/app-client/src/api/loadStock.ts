@@ -1,9 +1,8 @@
 import { types } from "app-server";
-
-const BASE_URL = "http://localhost:8080/yak-shop";
+import { BASE_URL } from ".";
 
 async function loadStock(): Promise<types.ILoadStock> {
-  const { data } = await fetch(BASE_URL + "/stock").then((resp) => resp.json());
+  const data = await fetch(BASE_URL + "/stock").then((resp) => resp.json());
   return data;
 }
 
