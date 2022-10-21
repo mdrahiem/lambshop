@@ -27,7 +27,7 @@ import { Yak } from "../types";
     @info: A Yak can produce 50-D*0.03 liters of milk (D = age in days).
            Also the age of the yak is 1 year = 100 days
 */
-const getTotalMilk = (herdList: Yak[], day: number): number => {
+const getTotalMilk = (herdList: Yak[], day: number = 0): number => {
   return herdList.reduce(
     (total, current) =>
       current.sex === "f" ? 50 - current.age * 100 * 0.03 + total : total,
@@ -40,10 +40,9 @@ const getTotalMilk = (herdList: Yak[], day: number): number => {
     @param2 = day for which order be delivered
     @info: At most every 8+D*0.01 days you can again shave a Yak (D = age in days).
 */
-const getTotalSkins = (herdList: Yak[], day: number): number => {
+const getTotalSkins = (herdList: Yak[], day: number = 0): number => {
   return herdList.reduce(
-    (total, current) =>
-      current.sex === "f" ? 8 - current.age * 0.01 + total : total,
+    (total, current) => (8 + current.age * 100 * 0.01 > day ? ++total : total),
     0
   );
 };

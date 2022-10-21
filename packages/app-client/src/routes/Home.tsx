@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import React, { Fragment } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { setInitData } from "../api/post";
+import { setInitData } from "../api/setInitData";
 import { Link } from "react-router-dom";
 
 const Home: FC = () => {

@@ -1,7 +1,7 @@
 import { Yak } from "../types";
 import { db } from "../utils/db.server";
 
-export const herdList = async (): Promise<Yak[]> => {
+export const getherdList = async (): Promise<Yak[]> => {
   return db.yak.findMany({
     select: {
       id: true,

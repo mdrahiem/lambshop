@@ -4,3 +4,8 @@ export type Yak = {
   age: number;
   sex: string;
 };
+
+export interface ILoadStock {
+  milk: string;
+  skin: string;
+}

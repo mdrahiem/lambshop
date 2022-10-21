@@ -3,6 +3,7 @@ import cors from "cors";
 import { loadRouter } from "./routes/load.router";
 import { herdRouter } from "./routes/herd.router";
 import { stockRouter } from "./routes/stock.router";
+import * as types from "./types";
 
 const app = express();
 
@@ -23,3 +24,5 @@ app.get("/", (_req, res) => {
 app.listen(port, () => {
   console.log(`app-server listening at http://localhost:${port}`);
 });
+
+export { types };

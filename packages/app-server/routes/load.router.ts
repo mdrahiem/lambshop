@@ -7,7 +7,7 @@ export const loadRouter = express.Router();
 
 loadRouter.post("/", async (request: Request, response: Response) => {
   try {
-    const herdList = await LoadService.herdList();
+    const herdList = await LoadService.getherdList();
     return response.status(205).json(herdList);
   } catch (error: any) {
     return response.status(500).json(error.message);
@@ -16,7 +16,7 @@ loadRouter.post("/", async (request: Request, response: Response) => {
 
 loadRouter.get("/", async (request: Request, response: Response) => {
   try {
-    const herdList = await LoadService.herdList();
+    const herdList = await LoadService.getherdList();
     return response.status(200).json(herdList);
   } catch (error: any) {
     return response.status(500).json(error.message);
