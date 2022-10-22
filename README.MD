@@ -17,7 +17,7 @@ yarn run
 - [x] Load stock
 - [ ] Load Herd
 - [x] Order form for user
-- [ ] Successful / Partial success / Failed order
+- [x] Successful / Partial success / Failed order
 - [ ] Real time updates of stock on home page
 
 ## Todo

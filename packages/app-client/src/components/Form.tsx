@@ -4,6 +4,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createOrder } from "../api/createOrder";
 import { IOrderPayload } from "app-server/types";
+import SuccessAlert from "./success-alert";
+import ErrorAlert from "./error-alert";
 
 const inputClassName =
   "form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
@@ -17,16 +19,17 @@ function FormComponent() {
   } = useForm<Inputs>();
   const queryClient = useQueryClient();
 
-  const submitFormMutation = useMutation((data) => createOrder(data), {
-    onMutate: async (data: IOrderPayload) => {
-      reset();
-    },
-    onError: (err, variables, context) => {},
-    // Always refetch after error or success:
-    onSettled: () => {
-      queryClient.invalidateQueries(["stock"]);
-    },
-  });
+  const submitFormMutation = useMutation(
+    (data: IOrderPayload) => createOrder(data),
+    {
+      onMutate: async () => {
+        reset();
+      },
+      onSettled: () => {
+        queryClient.invalidateQueries(["stock"]);
+      },
+    }
+  );
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { customer, days, milk, skins } = data;
@@ -105,52 +108,8 @@ function FormComponent() {
           Back to home
         </Link>
       </div>
-      {submitFormMutation.isSuccess && (
-        <div
-          className="flex bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700"
-          role="alert"
-        >
-          <svg
-            className="w-5 h-5 inline mr-3"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-          <div>
-            <span className="font-medium">Success!</span> Your order has been
-            placed successfully!
-          </div>
-        </div>
-      )}
-      {submitFormMutation.isError && (
-        <div
-          className="flex bg-red-100 rounded-lg p-4 mb-4 text-sm text-red-700"
-          role="alert"
-        >
-          <svg
-            className="w-5 h-5 inline mr-3"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-          <div>
-            <span className="font-medium">Something went wrong!</span> Please
-            check back in sometime
-          </div>
-        </div>
-      )}
+      {submitFormMutation.isSuccess && <SuccessAlert />}
+      {submitFormMutation.isError && <ErrorAlert />}
     </form>
   );
 }

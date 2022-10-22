@@ -21,20 +21,10 @@ orderRouter.post("/:days", async (request: Request, response: Response) => {
       days,
       milk: orderedMilk,
     };
-    console.log(
-      "daaaaaaaaaaaaaaaaaa",
-      customer,
-      orderedMilk,
-      orderdSkin,
-      days,
-      milkInStock,
-      skinsInStock
-    );
     if (
       (milkInStock > orderedMilk && skinsInStock > orderdSkin) ||
       milkInStock > orderedMilk
     ) {
-      console.log("IUam here");
       await OrderService.createOrder(orderPayload);
       return response.status(201).json(body);
     } else if (milkInStock > orderedMilk && skinsInStock < orderdSkin) {

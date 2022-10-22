@@ -10,7 +10,8 @@ herdRouter.get("/:day", async (request: Request, response: Response) => {
   try {
     const day: number = parseInt(request.params.day, 10);
     const herdList = await HerdService.getherdList();
-    const totalMilk = getTotalMilk(herdList, day);
+    const totalOrders = await HerdService.getTotalOrders();
+    const totalMilk = getTotalMilk(herdList, totalOrders, day);
 
     return response.status(200).json({
       totalMilk,
