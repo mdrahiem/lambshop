@@ -13,11 +13,14 @@ function FormComponent() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<Inputs>();
   const queryClient = useQueryClient();
 
   const submitFormMutation = useMutation((data) => createOrder(data), {
-    onMutate: async (data: IOrderPayload) => {},
+    onMutate: async (data: IOrderPayload) => {
+      reset();
+    },
     onError: (err, variables, context) => {},
     // Always refetch after error or success:
     onSettled: () => {
@@ -102,6 +105,52 @@ function FormComponent() {
           Back to home
         </Link>
       </div>
+      {submitFormMutation.isSuccess && (
+        <div
+          className="flex bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700"
+          role="alert"
+        >
+          <svg
+            className="w-5 h-5 inline mr-3"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clipRule="evenodd"
+            ></path>
+          </svg>
+          <div>
+            <span className="font-medium">Success!</span> Your order has been
+            placed successfully!
+          </div>
+        </div>
+      )}
+      {submitFormMutation.isError && (
+        <div
+          className="flex bg-red-100 rounded-lg p-4 mb-4 text-sm text-red-700"
+          role="alert"
+        >
+          <svg
+            className="w-5 h-5 inline mr-3"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clipRule="evenodd"
+            ></path>
+          </svg>
+          <div>
+            <span className="font-medium">Something went wrong!</span> Please
+            check back in sometime
+          </div>
+        </div>
+      )}
     </form>
   );
 }

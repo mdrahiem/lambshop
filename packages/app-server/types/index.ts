@@ -7,7 +7,7 @@ export type Yak = {
 
 export interface ILoadStock {
   milk: number;
-  skins: number;
+  skins?: number | null;
 }
 
 export interface IOrderPayload extends ILoadStock {

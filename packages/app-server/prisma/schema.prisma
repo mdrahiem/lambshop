@@ -27,3 +27,13 @@ model Herd {
   yak       Yak      @relation(fields: [yakId], references: [id])
   yakId     Int
 }
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  customer  String
+  milk      Float
+  skins     Int?
+  days      Int
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}

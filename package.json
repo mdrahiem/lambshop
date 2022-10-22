@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
+  "private": true,
   "scripts": {
+    "prestart": "yarn workspace app-server prisma:run",
     "start": "concurrently \"wsrun --parallel start\""
   },
   "workspaces": [

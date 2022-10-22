@@ -3,6 +3,7 @@ import { initData } from "../baseData";
 
 async function seed() {
   await db.yak.deleteMany({});
+  await db.order.deleteMany({});
   await Promise.all(
     initData.map((d) =>
       db.yak.create({
@@ -16,4 +17,9 @@ async function seed() {
   );
 }
 
-seed();
+try {
+  seed();
+} catch (e) {
+  console.error(e);
+  process.exit(1);
+}
