@@ -16,7 +16,7 @@ yarn run
 - [x] Load init data
 - [x] Load stock
 - [ ] Load Herd
-- [ ] Order form for user
+- [x] Order form for user
 - [ ] Successful / Partial success / Failed order
 - [ ] Real time updates of stock on home page
 
