@@ -51,9 +51,13 @@ const getTotalSkins = (
       ? totalOrders.reduce((a, b) => (b.skins ? b.skins + a : 0), 0)
       : 0;
   const totalSkinsFromHerds = herdList
-    .map((herd) => Math.floor((day - 2) / (8 + herd.age * 100 * 0.01)) + 1)
+    .map(
+      (herd) =>
+        Math.floor((day > 2 ? day - 2 : day) / (8 + herd.age * 100 * 0.01)) + 1
+    )
     .reduce((a, b) => b + a, 0);
 
+  console.log(totalSkinsFromHerds, totalSkinsFromOrders);
   return Math.max(totalSkinsFromHerds - totalSkinsFromOrders, 0);
 };
 

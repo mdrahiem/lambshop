@@ -26,8 +26,9 @@ stockRouter.get("/:day", async (request: Request, response: Response) => {
 stockRouter.get("/", async (request: Request, response: Response) => {
   try {
     const herdList = await HerdService.getherdList();
-    const milk = getTotalMilk(herdList);
-    const skins = getTotalSkins(herdList);
+    const totalOrders = await HerdService.getTotalOrders();
+    const milk = getTotalMilk(herdList, totalOrders);
+    const skins = getTotalSkins(herdList, totalOrders);
 
     return response.status(200).json({
       milk,

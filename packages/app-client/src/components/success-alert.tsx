@@ -1,3 +1,4 @@
+import React from "react";
 function SuccessAlert() {
   return (
     <div

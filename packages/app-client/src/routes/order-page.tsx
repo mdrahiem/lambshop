@@ -1,12 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { loadStock } from "../api/loadStock";
-import ErrorComponent from "../components/Error";
-import FormComponent from "../components/Form";
-import LoaderComponent from "../components/Loader";
+import ErrorComponent from "../components/error";
+import FormComponent from "../components/form";
+import LoaderComponent from "../components/loader";
+import useLoadStock from "../hooks/load-stock";
 
 function OrderForm() {
-  const { data, isFetching, isError } = useQuery(["stock"], loadStock);
+  const { data, isFetching, isError } = useLoadStock();
   if (!isFetching) <LoaderComponent />;
   if (isError) <ErrorComponent />;
   return (

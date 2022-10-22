@@ -6,6 +6,7 @@ import { createOrder } from "../api/createOrder";
 import { IOrderPayload } from "app-server/types";
 import SuccessAlert from "./success-alert";
 import ErrorAlert from "./error-alert";
+import useLoadStock from "../hooks/load-stock";
 
 const inputClassName =
   "form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
@@ -18,6 +19,7 @@ function FormComponent() {
     reset,
   } = useForm<Inputs>();
   const queryClient = useQueryClient();
+  const { data: stockData } = useLoadStock();
 
   const submitFormMutation = useMutation(
     (data: IOrderPayload) => createOrder(data),
@@ -65,9 +67,12 @@ function FormComponent() {
           type="number"
           className={inputClassName}
           placeholder="In how many days you would like to receive"
-          {...register("days", { required: true })}
+          {...register("days", {
+            required: true,
+          })}
         />
-        {errors.customer && (
+
+        {errors.days && (
           <span className="text-red-600 text-sm pt-2">
             Days should be more than 1
           </span>
@@ -78,11 +83,21 @@ function FormComponent() {
           type="number"
           className={inputClassName}
           placeholder="Number of liters of milk"
-          {...register("milk", { required: true })}
+          {...register("milk", {
+            required: true,
+            validate: (inputNumber) =>
+              stockData?.milk ? Number(inputNumber) < stockData?.milk : false,
+          })}
         />
-        {errors.customer && (
+        {errors.milk?.type === "required" && (
           <span className="text-red-600 text-sm pt-2">
             The value should be more than 1
+          </span>
+        )}
+        {errors.milk?.type === "validate" && (
+          <span className="text-red-600 text-sm pt-2">
+            Sorry we don't have that much stock right now. Please check the milk
+            stock.
           </span>
         )}
       </div>
@@ -91,8 +106,18 @@ function FormComponent() {
           type="number"
           className={inputClassName}
           placeholder="Number of skins"
-          {...register("skins")}
+          {...register("skins", {
+            required: true,
+            validate: (inputNumber) =>
+              stockData?.skins ? Number(inputNumber) < stockData?.skins : false,
+          })}
         />
+        {errors.skins?.type === "validate" && (
+          <span className="text-red-600 text-sm pt-2">
+            Sorry we don't have that much stock right now. Please check the
+            skins stock.
+          </span>
+        )}
       </div>
       <div className="text-center pt-1 pb-1">
         <button

@@ -20,12 +20,12 @@ function ErrorComponent() {
             </div>
           </div>
           <div>
-            <img src="https://i.ibb.co/G9DC8S0/404-2.png" />
+            <img alt="image" src="https://i.ibb.co/G9DC8S0/404-2.png" />
           </div>
         </div>
       </div>
       <div>
-        <img src="https://i.ibb.co/ck1SGFJ/Group.png" />
+        <img alt="image" src="https://i.ibb.co/ck1SGFJ/Group.png" />
       </div>
     </div>
   );

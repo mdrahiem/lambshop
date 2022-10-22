@@ -8,7 +8,7 @@ Be in the root directory and run the below commands
 
 ```
 yarn install
-yarn run
+yarn start
 ```
 
 ## User Stories
@@ -18,7 +18,7 @@ yarn run
 - [ ] Load Herd
 - [x] Order form for user
 - [x] Successful / Partial success / Failed order
-- [ ] Real time updates of stock on home page
+- [x] Real time updates of stock on home page
 
 ## Todo
 

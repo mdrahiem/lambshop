@@ -5,28 +5,8 @@ import { setInitData } from "../api/setInitData";
 import { Link } from "react-router-dom";
 
 const Home: FC = () => {
-  // const { data, refetch } = useQuery(
-  //   ["load"],
-  //   () =>
-  //     fetch("http://localhost:8080/yak-shop/load").then((resp) => resp.json()),
-  //   {
-  //     enabled: false,
-  //   }
-  // );
-
-  const addTodoMutation = useMutation(() => setInitData());
-
-  // const initData = trpc.useQuery(["load"]) as IReturnData;
+  useMutation(() => setInitData());
   return (
-    // <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    //   {/* <div>{JSON.stringify(initData.data)}</div> */}
-    //   {/* {query.data?.map((todo) => (
-    //     <li key={todo.id}>{todo.title}</li>
-    //   ))} */}
-    //   {/* {JSON.stringify(data)} */}
-    //   <button onClick={() => addTodoMutation.mutate()}>Load data</button>
-    //   {/* <Products /> */}
-    // </div>
     <div className="relative overflow-hidden bg-gray-100 h-screen">
       <div className="mx-auto max-w-7xl">
         <div className="relative z-10 bg-gray-100 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
@@ -42,6 +22,7 @@ const Home: FC = () => {
 
           <img
             className="absolute right-0 hidden h-screen text-white lg:block"
+            alt="image"
             src="https://xebia.com/wp-content/themes/xebia-theme/images/wave-long-v2.svg"
             style={{
               bottom: "-200px",

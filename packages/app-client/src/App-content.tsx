@@ -1,19 +1,13 @@
 import type { FC } from "react";
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
-import Home from "./routes/Home";
-import OrderForm from "./routes/Order-form";
+import LoaderComponent from "./components/loader";
+const Home = lazy(() => import("./routes/home"));
+const OrderForm = lazy(() => import("./routes/order-page"));
 
 function Layout() {
   return (
     <div>
-      {/* <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-        </ul>
-      </nav> */}
       <Outlet />
     </div>
   );
@@ -34,8 +28,22 @@ const AppContent: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="order" element={<OrderForm />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<LoaderComponent />}>
+              <Home />
+            </Suspense>
+          }
+        />
+        <Route
+          path="order"
+          element={
+            <Suspense fallback={<LoaderComponent />}>
+              <OrderForm />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<NoMatch />} />
       </Route>
     </Routes>
