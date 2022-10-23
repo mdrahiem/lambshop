@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "prestart": "yarn workspace app-server prisma:run",
-    "start": "concurrently \"wsrun --parallel start\""
+    "start": "concurrently \"wsrun --parallel start\"",
+    "test": "yarn workspace app-server server:test"
   },
   "workspaces": [
     "packages/*"

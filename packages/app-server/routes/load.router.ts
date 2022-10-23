@@ -11,10 +11,8 @@ loadRouter.post(
   xmlParser,
   async (request: Request, response: Response) => {
     try {
-      const herdList = await LoadService.createHerdList(
-        request.body.herd.labyak
-      );
-      return response.status(205).json(herdList);
+      await LoadService.createHerdList(request.body.herd.labyak);
+      return response.status(205).send("Data inserted and content reset.");
     } catch (error: any) {
       return response.status(500).json(error.message);
     }
