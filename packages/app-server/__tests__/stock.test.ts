@@ -3,11 +3,15 @@ import { app } from "..";
 import initialHerdStock from "./mocks/init-stock-response.json";
 import {
   partialStockXNLData,
-  initialXMLData,
   noStockXNLData,
+  initialXMLData,
 } from "../baseData";
 
 test("Should return herd initial stock with 200 status", async () => {
+  await request(app)
+    .post("/yak-shop/load")
+    .set("Content-Type", "application/xml")
+    .send(initialXMLData);
   const result = await request(app).get("/yak-shop/stock");
   expect(result.status).toBe(200);
   expect(result.body).toStrictEqual(initialHerdStock);

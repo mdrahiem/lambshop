@@ -13,30 +13,26 @@ orderRouter.post("/:days", async (request: Request, response: Response) => {
     const { customer, milk: orderedMilk, skins: orderdSkin } = body;
     const days: number = parseInt(params.days, 10);
     const herdList = await OrderService.getherdList();
-    const milkInStock = getTotalMilk(herdList);
-    const skinsInStock = getTotalSkins(herdList);
+    const totalOrders = await OrderService.getTotalOrders();
+    const milkInStock = getTotalMilk(herdList, totalOrders);
+    const skinsInStock = getTotalSkins(herdList, totalOrders);
     const orderPayload: IOrderPayload = {
       customer,
       skins: orderdSkin,
       days,
       milk: orderedMilk,
     };
-    if (
-      (milkInStock > orderedMilk && skinsInStock > orderdSkin) ||
-      milkInStock > orderedMilk
-    ) {
+    if (milkInStock > orderedMilk && skinsInStock > orderdSkin) {
       await OrderService.createOrder(orderPayload);
       return response.status(201).json(body);
     } else if (milkInStock > orderedMilk && skinsInStock < orderdSkin) {
       await OrderService.createOrder(orderPayload);
-      delete body.order.skins;
-      return { status: 206, order: body };
+      return response.status(206).send({ milk: orderedMilk });
     } else if (milkInStock < orderedMilk && skinsInStock > orderdSkin) {
       await OrderService.createOrder(orderPayload);
-      delete body.order.skins;
-      return { status: 206, order: body };
+      return response.status(206).send({ skins: orderdSkin });
     }
-    return { status: 404 };
+    return response.status(404).send();
   } catch (error: any) {
     return response.status(500).json(error.message);
   }

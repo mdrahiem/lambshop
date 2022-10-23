@@ -51,7 +51,6 @@ const getTotalSkins = (
     totalOrders.length > 0
       ? totalOrders.reduce((a, b) => (b.skins ? b.skins + a : 0), 0)
       : 0;
-
   const totalSkinsFromHerds = herdList
     .map((herd) =>
       herd.age > 1
