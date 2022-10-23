@@ -8,6 +8,12 @@ interface IHerd {
   herd: IYak[];
 }
 
+const initialXMLData = `<herd>
+<labyak name="Betty-1" age="4" sex="f" />
+<labyak name="Betty-2" age="8" sex="f" />
+<labyak name="Betty-3" age="9.5" sex="f" />
+</herd>`;
+
 const initData: IYak[] = [
   {
     name: "Betty",
@@ -71,4 +77,4 @@ const initData: IYak[] = [
   // },
 ];
 
-export { initData, IYak, IHerd };
+export { initData, IYak, IHerd, initialXMLData };

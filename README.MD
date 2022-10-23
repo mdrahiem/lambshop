@@ -11,6 +11,12 @@ yarn install
 yarn start
 ```
 
+And to run the tests
+
+```
+yarn test
+```
+
 ## User Stories
 
 - [x] Load init data from XML

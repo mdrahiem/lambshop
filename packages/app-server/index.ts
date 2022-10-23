@@ -6,7 +6,7 @@ import { stockRouter } from "./routes/stock.router";
 import * as types from "./types";
 import { orderRouter } from "./routes/order.router";
 
-const app = express();
+export const app = express();
 
 app.use(cors());
 app.use(express.json());

@@ -12,7 +12,7 @@ loadRouter.post(
   async (request: Request, response: Response) => {
     try {
       await LoadService.createHerdList(request.body.herd.labyak);
-      return response.status(205).send("Data inserted and content reset.");
+      return response.status(205).send();
     } catch (error: any) {
       return response.status(500).json(error.message);
     }
