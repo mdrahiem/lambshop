@@ -86,7 +86,7 @@ function FormComponent() {
           {...register("milk", {
             required: true,
             validate: (inputNumber) =>
-              stockData?.milk ? Number(inputNumber) < stockData?.milk : false,
+              stockData?.milk ? Number(inputNumber) <= stockData?.milk : false,
           })}
         />
         {errors.milk?.type === "required" && (
@@ -109,7 +109,9 @@ function FormComponent() {
           {...register("skins", {
             required: true,
             validate: (inputNumber) =>
-              stockData?.skins ? Number(inputNumber) < stockData?.skins : false,
+              stockData?.skins
+                ? Number(inputNumber) <= stockData?.skins
+                : false,
           })}
         />
         {errors.skins?.type === "validate" && (

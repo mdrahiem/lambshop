@@ -3,8 +3,6 @@ import { BASE_URL } from ".";
 
 async function createOrder(orderData: IOrderPayload) {
   const { days, customer, milk, skins } = orderData;
-  console.log(days, customer, milk, skins);
-
   const data = await fetch(BASE_URL + "/order/" + days, {
     method: "POST",
     headers: {

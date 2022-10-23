@@ -13,7 +13,7 @@ yarn start
 
 ## User Stories
 
-- [x] Load init data
+- [x] Load init data from XML
 - [x] Load stock
 - [ ] Load Herd
 - [x] Order form for user

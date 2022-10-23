@@ -10,7 +10,7 @@ function OrderForm() {
   if (isError) <ErrorComponent />;
   return (
     <>
-      <section className="h-full gradient-form bg-gray-100 md:h-screen">
+      <section className="h-full gradient-form md:h-screen">
         <div className="container py-12 px-6 h-full mx-auto">
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div className="xl:w-10/12">

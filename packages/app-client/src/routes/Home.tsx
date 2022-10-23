@@ -5,36 +5,11 @@ import { setInitData } from "../api/setInitData";
 import { Link } from "react-router-dom";
 
 const Home: FC = () => {
-  useMutation(() => setInitData());
+  const addMutation = useMutation(() => setInitData());
   return (
-    <div className="relative overflow-hidden bg-gray-100 h-screen">
+    <div className="relative overflow-hidden  h-screen">
       <div className="mx-auto max-w-7xl">
-        <div className="relative z-10 bg-gray-100 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
-          <svg
-            className="absolute inset-y-0 right-0 hidden h-screen w-48 translate-x-1/2 transform text-white lg:block"
-            fill="#F3F4F6"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <polygon points="50,0 100,0 50,100 0,100" />
-          </svg>
-
-          <img
-            className="absolute right-0 hidden h-screen text-white lg:block"
-            alt="image"
-            src="https://xebia.com/wp-content/themes/xebia-theme/images/wave-long-v2.svg"
-            style={{
-              bottom: "-200px",
-              position: "fixed",
-              objectFit: "cover",
-              left: "-80px",
-              rotate: "0deg",
-              zIndex: 0,
-              opacity: "0.15",
-            }}
-          />
-
+        <div className="relative z-10  pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
           <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-screen flex items-center relative z-10">
             <div className="sm:text-center lg:text-left">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
@@ -58,6 +33,7 @@ const Home: FC = () => {
                   <Link
                     to="order"
                     className="flex w-full items-center justify-center rounded-md border border-transparent bg-pink-600 px-8 py-3 text-base font-medium text-white hover:bg-pink-800 md:py-4 md:px-10 md:text-lg"
+                    onClick={() => addMutation.mutate()}
                   >
                     Order now
                   </Link>
@@ -67,10 +43,10 @@ const Home: FC = () => {
           </main>
         </div>
       </div>
-      <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+      <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 flex items-center justify-center">
         <img
-          className="h-56 w-full object-contain sm:h-72 md:h-96 lg:h-full lg:w-full"
-          src="https://i.ibb.co/LrrCyZ9/yakshop-bg.jpg"
+          className="h-56 w-full object-contain sm:h-72 md:h-96 hero-yak"
+          src="https://i.ibb.co/JBTs4nv/New-Project-1.png"
           alt=""
         />
       </div>

@@ -17,15 +17,6 @@ model Yak {
   name      String
   age       Float
   sex       String
-  Herd      Herd[]
-}
-
-model Herd {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  yak       Yak      @relation(fields: [yakId], references: [id])
-  yakId     Int
 }
 
 model Order {

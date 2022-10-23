@@ -57,7 +57,6 @@ const getTotalSkins = (
     )
     .reduce((a, b) => b + a, 0);
 
-  console.log(totalSkinsFromHerds, totalSkinsFromOrders);
   return Math.max(totalSkinsFromHerds - totalSkinsFromOrders, 0);
 };
 
