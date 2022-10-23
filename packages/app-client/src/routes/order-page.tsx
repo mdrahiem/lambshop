@@ -16,7 +16,7 @@ function OrderForm() {
             <div className="xl:w-10/12">
               <div className="block bg-white shadow-lg rounded-lg">
                 <div className="lg:flex lg:flex-wrap g-0">
-                  <div className="lg:w-6/12 flex items-center lg:rounded-l-lg rounded-b-lg lg:rounded-br-none bg-gradient-to-b from-pink-500 via-pink-600 to-pink-800">
+                  <div className="lg:w-6/12 flex items-center lg:rounded-l-lg rounded-t-lg lg:rounded-br-none bg-gradient-to-b from-pink-500 via-pink-600 to-pink-800">
                     <div className="text-white px-4 py-6 md:p-12 md:mx-6">
                       <h1 className="text-4xl font-bold">Current Stock</h1>
                       <p className="text-lg mt-2">

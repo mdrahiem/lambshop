@@ -1,6 +1,14 @@
 # The Yakshop
 
-A mono repo with Node as server React as client
+This is an online shop to order Yak milk and skins.
+
+# About the repository
+
+A mono repo with Node as server React as client.
+
+# Before installation
+
+Make sure the node version is > 14+ and <= 16.
 
 # How to run project
 
@@ -10,6 +18,8 @@ Be in the root directory and run the below commands
 yarn install
 yarn start
 ```
+
+Then you should see the client app is running on PORT 3001 and server app is running on PORT 8080.
 
 And to run the tests
 
@@ -28,4 +38,4 @@ yarn test
 
 ## Todo
 
-- [ ] Write tests
+- [x] Write tests

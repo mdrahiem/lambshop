@@ -45,7 +45,7 @@ function FormComponent() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h2 className="text-4xl font-bold">Place your order</h2>
+      <h2 className="text-4xl font-bold mt-4 md:mt-0">Place your order</h2>
       <p className="text-lg mt-1 mb-4 text-gray-500">
         Please enter your order details below
       </p>

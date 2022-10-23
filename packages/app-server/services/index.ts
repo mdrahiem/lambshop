@@ -5,8 +5,6 @@ import { db } from "../utils/db.server";
 export const createHerdList = async (herd: IYak[] | IYak) => {
   await db.yak.deleteMany();
   await db.order.deleteMany();
-  console.log("herd", herd);
-
   Array.isArray(herd)
     ? await Promise.all(
         herd.map((d) =>
