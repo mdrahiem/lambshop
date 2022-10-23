@@ -13,27 +13,45 @@ stockRouter.get("/:day", async (request: Request, response: Response) => {
     const totalOrders = await HerdService.getTotalOrders();
     const milk = getTotalMilk(herdList, totalOrders, day);
     const skins = getTotalSkins(herdList, totalOrders, day);
-
-    return response.status(200).json({
-      milk,
-      skins,
-    });
+    return !milk && !skins
+      ? response.status(204)
+      : !milk
+      ? response.status(206).json({
+          skins,
+        })
+      : !skins
+      ? response.status(206).json({
+          milk,
+        })
+      : response.status(200).json({
+          milk,
+          skins,
+        });
   } catch (error: any) {
     return response.status(500).json(error.message);
   }
 });
 
-stockRouter.get("/", async (request: Request, response: Response) => {
+stockRouter.get("/", async (_, response: Response) => {
   try {
     const herdList = await HerdService.getherdList();
     const totalOrders = await HerdService.getTotalOrders();
     const milk = getTotalMilk(herdList, totalOrders);
     const skins = getTotalSkins(herdList, totalOrders);
-
-    return response.status(200).json({
-      milk,
-      skins,
-    });
+    return !milk && !skins
+      ? response.status(204).json({})
+      : !milk
+      ? response.status(206).json({
+          skins,
+        })
+      : !skins
+      ? response.status(206).json({
+          milk,
+        })
+      : response.status(200).json({
+          milk,
+          skins,
+        });
   } catch (error: any) {
     return response.status(500).json(error.message);
   }

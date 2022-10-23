@@ -11,7 +11,7 @@
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
     "prisma:run": "yarn prisma:generate && yarn prisma:push && yarn prisma:seed",
-    "server:test": "jest"
+    "server:test": "jest --forceExit --detectOpenHandles  --watchAll --maxWorkers=1"
   },
   "dependencies": {
     "@prisma/client": "^4.5.0",

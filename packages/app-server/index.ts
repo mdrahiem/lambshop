@@ -23,8 +23,10 @@ app.get("/", (_req, res) => {
   res.send("Hello from app-server");
 });
 
-app.listen(port, () => {
-  console.log(`app-server listening at http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(port, () => {
+    console.log(`app-server listening at http://localhost:${port}`);
+  });
+}
 
 export { types };

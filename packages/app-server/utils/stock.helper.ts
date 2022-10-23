@@ -1,6 +1,7 @@
 import { IOrderPayload, Yak } from "../types";
 
 const YAK_MAX_AGE = 9.99;
+const MIN_AGE_TO_SHAVE = 1;
 
 /*
     @param1 = herdList
@@ -50,10 +51,13 @@ const getTotalSkins = (
     totalOrders.length > 0
       ? totalOrders.reduce((a, b) => (b.skins ? b.skins + a : 0), 0)
       : 0;
+
   const totalSkinsFromHerds = herdList
-    .map(
-      (herd) =>
-        Math.floor((day > 2 ? day - 2 : day) / (8 + herd.age * 100 * 0.01)) + 1
+    .map((herd) =>
+      herd.age > 1
+        ? Math.floor((day > 2 ? day - 2 : day) / (8 + herd.age * 100 * 0.01)) +
+          1
+        : 0
     )
     .reduce((a, b) => b + a, 0);
 

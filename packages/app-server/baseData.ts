@@ -14,6 +14,14 @@ const initialXMLData = `<herd>
 <labyak name="Betty-3" age="9.5" sex="f" />
 </herd>`;
 
+const partialStockXNLData = `<herd>
+<labyak name="Eddy" age="4" sex="m" />
+</herd>`;
+
+const noStockXNLData = `<herd>
+<labyak name="Eddy" age="0" sex="m" />
+</herd>`;
+
 const initData: IYak[] = [
   {
     name: "Betty",
@@ -77,4 +85,11 @@ const initData: IYak[] = [
   // },
 ];
 
-export { initData, IYak, IHerd, initialXMLData };
+export {
+  initData,
+  IYak,
+  IHerd,
+  initialXMLData,
+  partialStockXNLData,
+  noStockXNLData,
+};

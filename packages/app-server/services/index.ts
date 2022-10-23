@@ -2,20 +2,30 @@ import { IYak } from "../baseData";
 import { IOrderPayload, Yak } from "../types";
 import { db } from "../utils/db.server";
 
-export const createHerdList = async (herd: IYak[]) => {
+export const createHerdList = async (herd: IYak[] | IYak) => {
   await db.yak.deleteMany();
   await db.order.deleteMany();
-  await Promise.all(
-    herd.map((d) =>
-      db.yak.create({
+  console.log("herd", herd);
+
+  Array.isArray(herd)
+    ? await Promise.all(
+        herd.map((d) =>
+          db.yak.create({
+            data: {
+              name: d.name,
+              age: Number(d.age),
+              sex: d.sex,
+            },
+          })
+        )
+      )
+    : await db.yak.create({
         data: {
-          name: d.name,
-          age: Number(d.age),
-          sex: d.sex,
+          name: herd.name,
+          age: Number(herd.age),
+          sex: herd.sex,
         },
-      })
-    )
-  );
+      });
   const herdList = await db.yak.findMany({
     select: {
       id: true,
