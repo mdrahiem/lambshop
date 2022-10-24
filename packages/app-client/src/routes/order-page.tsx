@@ -26,13 +26,13 @@ function OrderForm() {
                       <div className="flex justify-left mt-12">
                         <div className="mr-24">
                           <h4 className="text-7xl font-semibold">
-                            {data?.milk}
+                            {data?.milk || 0}
                           </h4>
                           <h2 className="text-xl pl-3">Liters of Milk</h2>
                         </div>
                         <div>
                           <h4 className="text-7xl font-semibold">
-                            {data?.skins}
+                            {data?.skins || 0}
                           </h4>
                           <h2 className="text-xl">Skins</h2>
                         </div>
