@@ -22,17 +22,22 @@ orderRouter.post("/:days", async (request: Request, response: Response) => {
       days,
       milk: orderedMilk,
     };
-    if (milkInStock > orderedMilk && skinsInStock > orderdSkin) {
+    console.log(milkInStock, orderedMilk, skinsInStock, orderdSkin);
+
+    if (milkInStock >= orderedMilk && skinsInStock >= orderdSkin) {
       await OrderService.createOrder(orderPayload);
       return response.status(201).json(body);
-    } else if (milkInStock > orderedMilk && skinsInStock < orderdSkin) {
+    } else if (milkInStock >= orderedMilk && skinsInStock < orderdSkin) {
       await OrderService.createOrder(orderPayload);
       return response.status(206).send({ milk: orderedMilk });
-    } else if (milkInStock < orderedMilk && skinsInStock > orderdSkin) {
+    } else if (milkInStock < orderedMilk && skinsInStock >= orderdSkin) {
       await OrderService.createOrder(orderPayload);
       return response.status(206).send({ skins: orderdSkin });
     }
-    return response.status(404).send();
+    return response
+      .status(404)
+      .type("text/html")
+      .send("Sorry stock not available at the moment!");
   } catch (error: any) {
     return response.status(500).json(error.message);
   }
