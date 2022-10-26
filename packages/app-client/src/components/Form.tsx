@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createOrder } from "../api/createOrder";
+import { createOrder } from "../api/create-order";
 import { IOrderPayload } from "app-server/types";
 import SuccessAlert from "./success-alert";
 import ErrorAlert from "./error-alert";
@@ -27,6 +27,7 @@ function FormComponent() {
       onMutate: async () => {
         reset();
       },
+      onError: () => {},
       onSettled: () => {
         queryClient.invalidateQueries(["stock"]);
       },
@@ -42,7 +43,6 @@ function FormComponent() {
       skins: Number(skins),
     });
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2 className="text-4xl font-bold mt-4 md:mt-0">Place your order</h2>
@@ -86,7 +86,10 @@ function FormComponent() {
           {...register("milk", {
             required: true,
             validate: (inputNumber) =>
-              stockData?.milk ? Number(inputNumber) <= stockData?.milk : false,
+              stockData?.milk
+                ? Number(inputNumber) > 0 &&
+                  Number(inputNumber) <= stockData?.milk
+                : true,
           })}
         />
         {errors.milk?.type === "required" && (
@@ -107,11 +110,11 @@ function FormComponent() {
           className={inputClassName}
           placeholder="Number of skins"
           {...register("skins", {
-            required: true,
             validate: (inputNumber) =>
               stockData?.skins
-                ? Number(inputNumber) <= stockData?.skins
-                : false,
+                ? Number(inputNumber) > 0 &&
+                  Number(inputNumber) <= stockData?.skins
+                : true,
           })}
         />
         {errors.skins?.type === "validate" && (

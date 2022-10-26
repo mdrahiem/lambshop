@@ -53,7 +53,7 @@ const getTotalSkins = (
       : 0;
   const totalSkinsFromHerds = herdList
     .map((herd) =>
-      herd.age > 1
+      herd.age > MIN_AGE_TO_SHAVE
         ? Math.floor((day > 2 ? day - 2 : day) / (8 + herd.age * 100 * 0.01)) +
           1
         : 0

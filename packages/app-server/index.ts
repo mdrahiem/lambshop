@@ -5,6 +5,7 @@ import { herdRouter } from "./routes/herd.router";
 import { stockRouter } from "./routes/stock.router";
 import * as types from "./types";
 import { orderRouter } from "./routes/order.router";
+import { yakRouter } from "./routes/yak.router";
 
 export const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // Routes
 app.use("/yak-shop/load", loadRouter);
+app.use("/yak-shop/yak", yakRouter);
 app.use("/yak-shop/herd", herdRouter);
 app.use("/yak-shop/stock", stockRouter);
 app.use("/yak-shop/order", orderRouter);

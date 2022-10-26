@@ -10,10 +10,10 @@ test("Should reset herd data and return 205", async () => {
   expect(result.status).toBe(205);
 });
 
-test("Should throw 500 in case of no payload data", async () => {
+test("Should throw 400 in case of no payload data", async () => {
   const result = await request(app)
     .post("/yak-shop/load")
     .set("Content-Type", "application/xml")
     .send();
-  expect(result.status).toBe(500);
+  expect(result.status).toBe(400);
 });
