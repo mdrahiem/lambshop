@@ -19,7 +19,7 @@ function FormComponent() {
     reset,
   } = useForm<Inputs>();
   const queryClient = useQueryClient();
-  const { data: stockData } = useLoadStock();
+  const { data: stockData } = useLoadStock({});
 
   const submitFormMutation = useMutation(
     (data: IOrderPayload) => createOrder(data),
@@ -54,7 +54,9 @@ function FormComponent() {
           type="text"
           className={inputClassName}
           placeholder="Your name"
-          {...register("customer", { required: true })}
+          {...register("customer", {
+            required: true,
+          })}
         />
         {errors.customer && (
           <span className="text-red-600 text-sm pt-2">
@@ -68,7 +70,7 @@ function FormComponent() {
           className={inputClassName}
           placeholder="In how many days you would like to receive"
           {...register("days", {
-            required: true,
+            onChange: (e) => console.log(e),
           })}
         />
 

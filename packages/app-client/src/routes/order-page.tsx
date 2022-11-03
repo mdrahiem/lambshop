@@ -5,7 +5,7 @@ import LoaderComponent from "../components/loader";
 import useLoadStock from "../hooks/load-stock";
 
 function OrderForm() {
-  const { data, isFetching, isError } = useLoadStock();
+  const { data, isFetching, isError } = useLoadStock({});
   if (!isFetching) <LoaderComponent />;
   if (isError) <ErrorComponent />;
   return (

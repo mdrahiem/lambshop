@@ -36,6 +36,16 @@ test("Return correct milk stock for 14 days", async () => {
   expect(milkInStock).toBe(1188.81);
 });
 
+test("Return correct milk stock for 50 days", async () => {
+  const milkInStock = await getTotalMilk(initData, [], 50);
+  expect(milkInStock).toBe(1188.81);
+});
+
+test("Return correct milk stock for 51 days", async () => {
+  const milkInStock = await getTotalMilk(initData, [], 51);
+  expect(milkInStock).toBe(1188.81);
+});
+
 test("Return correct skins stock for 0 days", async () => {
   const skinsInStock = await getTotalSkins(initData);
   expect(skinsInStock).toBe(3);
