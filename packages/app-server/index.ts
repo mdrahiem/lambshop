@@ -5,7 +5,7 @@ import { herdRouter } from "./routes/herd.router";
 import { stockRouter } from "./routes/stock.router";
 import * as types from "./types";
 import { orderRouter } from "./routes/order.router";
-import { yakRouter } from "./routes/yak.router";
+import { lambRouter } from "./routes/lamb.router";
 
 export const app = express();
 
@@ -13,11 +13,11 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/yak-shop/load", loadRouter);
-app.use("/yak-shop/yak", yakRouter);
-app.use("/yak-shop/herd", herdRouter);
-app.use("/yak-shop/stock", stockRouter);
-app.use("/yak-shop/order", orderRouter);
+app.use("/lamb-shop/load", loadRouter);
+app.use("/lamb-shop/lamb", lambRouter);
+app.use("/lamb-shop/herd", herdRouter);
+app.use("/lamb-shop/stock", stockRouter);
+app.use("/lamb-shop/order", orderRouter);
 
 const port = 8080;
 

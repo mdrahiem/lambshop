@@ -1,28 +1,28 @@
-interface IYak {
+interface ILamb {
   name: string;
   age: number;
   sex: "f" | "m";
 }
 
 interface IHerd {
-  herd: IYak[];
+  herd: ILamb[];
 }
 
 const initialXMLData = `<herd>
-<labyak name="Betty-1" age="4" sex="f" />
-<labyak name="Betty-2" age="8" sex="f" />
-<labyak name="Betty-3" age="9.5" sex="f" />
+<lablamb name="Betty-1" age="4" sex="f" />
+<lablamb name="Betty-2" age="8" sex="f" />
+<lablamb name="Betty-3" age="9.5" sex="f" />
 </herd>`;
 
 const partialStockXNLData = `<herd>
-<labyak name="Eddy" age="4" sex="m" />
+<lablamb name="Eddy" age="4" sex="m" />
 </herd>`;
 
 const noStockXNLData = `<herd>
-<labyak name="Eddy" age="0" sex="m" />
+<lablamb name="Eddy" age="0" sex="m" />
 </herd>`;
 
-const initData: IYak[] = [
+const initData: ILamb[] = [
   {
     name: "Betty",
     age: 4,
@@ -87,7 +87,7 @@ const initData: IYak[] = [
 
 export {
   initData,
-  IYak,
+  ILamb,
   IHerd,
   initialXMLData,
   partialStockXNLData,

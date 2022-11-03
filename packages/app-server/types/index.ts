@@ -1,4 +1,4 @@
-export type Yak = {
+export type Lamb = {
   id: number;
   name: string;
   age: number;

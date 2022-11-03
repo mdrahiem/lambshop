@@ -4,9 +4,9 @@ import type { Request, Response } from "express";
 import * as HerdService from "../services";
 import { getTotalMilk } from "../utils/stock.helper";
 
-export const yakRouter = express.Router();
+export const lambRouter = express.Router();
 
-yakRouter.get("/:day", async (request: Request, response: Response) => {
+lambRouter.get("/:day", async (request: Request, response: Response) => {
   try {
     const day: number = parseInt(request.params.day, 10);
     const herdList = await HerdService.getherdList();

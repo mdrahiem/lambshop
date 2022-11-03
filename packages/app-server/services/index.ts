@@ -1,14 +1,14 @@
-import { IYak } from "../baseData";
-import { IOrderPayload, Yak } from "../types";
+import { ILamb } from "../baseData";
+import { IOrderPayload, Lamb } from "../types";
 import { db } from "../utils/db.server";
 
-export const createHerdList = async (herd: IYak[] | IYak) => {
-  await db.yak.deleteMany();
+export const createHerdList = async (herd: ILamb[] | ILamb) => {
+  await db.lamb.deleteMany();
   await db.order.deleteMany();
   Array.isArray(herd)
     ? await Promise.all(
         herd.map((d) =>
-          db.yak.create({
+          db.lamb.create({
             data: {
               name: d.name,
               age: Number(d.age),
@@ -17,14 +17,14 @@ export const createHerdList = async (herd: IYak[] | IYak) => {
           })
         )
       )
-    : await db.yak.create({
+    : await db.lamb.create({
         data: {
           name: herd.name,
           age: Number(herd.age),
           sex: herd.sex,
         },
       });
-  const herdList = await db.yak.findMany({
+  const herdList = await db.lamb.findMany({
     select: {
       id: true,
       name: true,
@@ -35,8 +35,8 @@ export const createHerdList = async (herd: IYak[] | IYak) => {
   return herdList;
 };
 
-export const getherdList = async (): Promise<Yak[]> => {
-  const totalHerds = await db.yak.findMany({
+export const getherdList = async (): Promise<Lamb[]> => {
+  const totalHerds = await db.lamb.findMany({
     select: {
       id: true,
       name: true,

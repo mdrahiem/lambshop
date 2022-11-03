@@ -1,5 +1,5 @@
 {
-  "name": "yakshop-mdrahiem",
+  "name": "lambshop-mdrahiem",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xebia/yakshop-mdrahiem.git"
+    "url": "git+https://github.com/mdrahiem/lambshop.git"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
@@ -24,7 +24,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/xebia/yakshop-mdrahiem/issues"
+    "url": "https://github.com/mdrahiem/lambshop.git/issues"
   },
-  "homepage": "https://github.com/xebia/yakshop-mdrahiem#readme"
+  "homepage": "https://github.com/mdrahiem/lambshop.git#readme"
 }

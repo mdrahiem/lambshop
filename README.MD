@@ -1,6 +1,6 @@
-# The Yakshop
+# The Lambshop
 
-This is an online shop to order Yak milk and skins.
+This is an online shop to order Lamb milk and skins.
 
 # About the repository
 

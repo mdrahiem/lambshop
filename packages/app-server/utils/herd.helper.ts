@@ -1,4 +1,4 @@
-import { Yak } from "../types";
+import { Lamb } from "../types";
 
 function getAgeLastShaved(age: number, requestedDay: number) {
   const minDaysToBeShavedAgain = Math.round(8 + age * 100 * 0.01) + 1; // not on the day but next day
@@ -9,7 +9,7 @@ function getAgeLastShaved(age: number, requestedDay: number) {
   return age + (numberOfTimesShavedBefore * minDaysToBeShavedAgain) / 100;
 }
 
-function getHerdsFromHerdList(herdList: Yak[], requestedDay: number) {
+function getHerdsFromHerdList(herdList: Lamb[], requestedDay: number) {
   return herdList.map((herd) => ({
     name: herd.name,
     age: herd.age + Number(requestedDay / 100),

@@ -1,16 +1,16 @@
-import { IOrderPayload, Yak } from "../types";
+import { IOrderPayload, Lamb } from "../types";
 
-const YAK_MAX_AGE = 9.99;
+const LAMB_MAX_AGE = 9.99;
 const MIN_AGE_TO_SHAVE = 1;
 
 /*
     @param1 = herdList
     @param2 = day for which order be delivered
-    @info: A Yak can produce 50-D*0.03 liters of milk (D = age in days).
-           Also the age of the yak is 1 year = 100 days
+    @info: A Lamb can produce 50-D*0.03 liters of milk (D = age in days).
+           Also the age of the lamb is 1 year = 100 days
 */
 const getTotalMilk = (
-  herdList: Yak[],
+  herdList: Lamb[],
   totalOrders: IOrderPayload[] = [],
   day: number = 0
 ): number => {
@@ -27,10 +27,10 @@ const getTotalMilk = (
   return Math.max(totalMilkFromHerds - totalMilkFromOrders, 0);
 };
 
-const getMilkFromHerd = (herdList: Yak[], dayItem = 0): number => {
+const getMilkFromHerd = (herdList: Lamb[], dayItem = 0): number => {
   return herdList.reduce(
     (total, current) =>
-      current.sex === "f" && current.age <= YAK_MAX_AGE
+      current.sex === "f" && current.age <= LAMB_MAX_AGE
         ? 50 - (current.age * 100 + dayItem) * 0.03 + total
         : total,
     0
@@ -40,10 +40,10 @@ const getMilkFromHerd = (herdList: Yak[], dayItem = 0): number => {
 /*
     @param1 = herdList
     @param2 = day for which order be delivered
-    @info: At most every 8+D*0.01 days you can again shave a Yak (D = age in days).
+    @info: At most every 8+D*0.01 days you can again shave a Lamb (D = age in days).
 */
 const getTotalSkins = (
-  herdList: Yak[],
+  herdList: Lamb[],
   totalOrders: IOrderPayload[] = [],
   day: number = 0
 ): number => {

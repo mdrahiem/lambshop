@@ -8,7 +8,7 @@ import { processRequestBody } from "zod-express-middleware";
 
 export const loadRouter = express.Router();
 
-const yakSchema = z.object({
+const lambSchema = z.object({
   name: z.string(),
   age: z.preprocess(
     (a) => parseFloat(a as string),
@@ -19,11 +19,11 @@ const yakSchema = z.object({
 
 export const xmlSchema = z.object({
   herd: z.object({
-    labyak: z
-      .array(yakSchema, {
+    lablamb: z
+      .array(lambSchema, {
         invalid_type_error: "Invalid XML schema.",
       })
-      .or(yakSchema),
+      .or(lambSchema),
   }),
 });
 
@@ -33,7 +33,7 @@ loadRouter.post(
   processRequestBody(xmlSchema),
   async (request: Request, response: Response) => {
     try {
-      await LoadService.createHerdList(request.body.herd.labyak);
+      await LoadService.createHerdList(request.body.herd.lablamb);
       return response.status(205).send();
     } catch (error: any) {
       return response.status(500).json(error.message);
