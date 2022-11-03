@@ -46,7 +46,7 @@ const Home: FC = () => {
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 flex items-center justify-center">
         <img
           className="h-56 w-full object-contain sm:h-72 md:h-96 hero-lamb"
-          src="https://i.ibb.co/JBTs4nv/New-Project-1.png"
+          src="https://i.ibb.co/k0xYN5Y/lamb-1.png"
           alt=""
         />
       </div>
